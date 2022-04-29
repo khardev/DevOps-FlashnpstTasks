@@ -28,6 +28,11 @@ stages:
     pool:
       name: devopschallenge
     steps:
+    - task: SonarQubePrepare@5
+      inputs:
+        scannerMode: 'MSBuild'
+    - task: SonarQubeAnalyze@4
+
     - task: WhiteSource@21
       inputs:
         cwd: '$(System.DefaultWorkingDirectory)'
@@ -48,7 +53,6 @@ stages:
        projects: '**/*Test/*.csproj'
        arguments: '--configuration $(buildConfiguration)'
       
-    
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(system.defaultworkingDirectory)/docker-app/manifests'
@@ -61,3 +65,4 @@ stages:
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)'
         artifact: 'dotnetapp'
+        
