@@ -1,5 +1,6 @@
 # DevOps-FlashnpstTasks question - 3
 
-kubectl apply -f deployment.yml
-
-Assuming kubeconfig is already configured for the target cluster while running above command.
+Create loganalisis.sh
+paste the contents from the file
+run it.
+chck the count of sorted file and copare with original file
