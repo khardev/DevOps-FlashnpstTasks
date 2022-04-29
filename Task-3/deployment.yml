@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopApp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shopApp
+  template:
+    metadata:
+      labels:
+        app: shopApp
+    spec:
+      containers:
+      - name: shopApp
+        image: hub.example.com/shop-backend:1.0.e
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        livenessProbe:
+          httpGet:
+            path: /hc
+            port: 5000
+            httpHeaders:
+              - name: Custom-Header
+                value: optional
+          initialDelaySeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5000
+            httpHeaders:
+              - name: Custom-Header
+                value: optional
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          failureThreshold: 2
