@@ -1,0 +1,8 @@
+Frontend – Backend;(Assuming Application deployed as part of AKS)
+Application insights for Kubernetes cluster.
+We can collect the logs into application insights and push them into log analytic workspace.
+We can use Grafana/Prometheus and add workflow to add azure monitor as data source and create metrics on top of that.
+We can use Kibana where we can store the logs as well as visualize it.
+ • DBs
+You can enable slow query and audit logging on your server. These logs are also available through Azure Diagnostic Logs in Azure Monitor logs, Event Hubs, and Storage Account.
+We can push logs into Log Analytics workspace and create alerting
