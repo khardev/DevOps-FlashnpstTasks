@@ -1,0 +1,8 @@
+--- #ssh-access main yaml
+  - hosts: servers
+    gather_facts: False
+    remote_user: azureuser
+    become: true
+    become_user: root
+    roles:
+      - ssh-access
